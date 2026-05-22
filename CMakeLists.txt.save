@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.20)
+project(project LANGUAGES CXX C)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# 1. Tell CMake where to find your LLVM installation configuration
+set(LLVM_DIR "/home/shevo/LLVM-22.1.0-Linux-X64/lib/cmake/llvm")
+set(MLIR_DIR "/home/shevo/LLVM-22.1.0-Linux-X64/lib/cmake/mlir")
+
+find_package(LLVM REQUIRED CONFIG)
+find_package(MLIR REQUIRED CONFIG)
+
+message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
+message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+
+# 2. Include standard LLVM/MLIR macro definitions and paths
+include_directories(${LLVM_INCLUDE_DIRS} ${MLIR_INCLUDE_DIRS})
+link_directories(${LLVM_LIBRARY_DIRS})
+add_definitions(${LLVM_DEFINITIONS})
+
+# 3. Create a test C++ driver executable that uses the MLIR Context API
+add_executable(mlir-driver src/main.cpp)
+
+# 4. Link required MLIR system libraries to your binary
+target_link_libraries(mlir-driver PRIVATE
+    MLIRIR
+    MLIRParser
+    MLIRSupport
+)

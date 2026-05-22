@@ -1,0 +1,12 @@
+/home/shevo/project/build/CMakeFiles/intrinsics_gen.dir
+/home/shevo/project/build/CMakeFiles/vt_gen.dir
+/home/shevo/project/build/CMakeFiles/omp_gen.dir
+/home/shevo/project/build/CMakeFiles/acc_gen.dir
+/home/shevo/project/build/CMakeFiles/target_parser_gen.dir
+/home/shevo/project/build/CMakeFiles/mlir-tablegen-targets.dir
+/home/shevo/project/build/CMakeFiles/mlir-headers.dir
+/home/shevo/project/build/CMakeFiles/mlir-generic-headers.dir
+/home/shevo/project/build/CMakeFiles/mlir-doc.dir
+/home/shevo/project/build/CMakeFiles/mlir-driver.dir
+/home/shevo/project/build/CMakeFiles/edit_cache.dir
+/home/shevo/project/build/CMakeFiles/rebuild_cache.dir
