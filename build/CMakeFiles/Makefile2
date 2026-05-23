@@ -324,12 +324,12 @@ CMakeFiles/mlir-doc.dir/clean:
 CMakeFiles/mlir-driver.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mlir-driver.dir/build.make CMakeFiles/mlir-driver.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mlir-driver.dir/build.make CMakeFiles/mlir-driver.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/shevo/project/build/CMakeFiles --progress-num=1,2 "Built target mlir-driver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/shevo/project/build/CMakeFiles --progress-num=1,2,3 "Built target mlir-driver"
 .PHONY : CMakeFiles/mlir-driver.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mlir-driver.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/shevo/project/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shevo/project/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/mlir-driver.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/shevo/project/build/CMakeFiles 0
 .PHONY : CMakeFiles/mlir-driver.dir/rule

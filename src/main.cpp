@@ -1,57 +1,116 @@
-#include "mlir/IR/MLIRContext.h"
+#include "MyDialect.h"
+
 #include "mlir/IR/BuiltinOps.h"
+#include "mlir/IR/DialectRegistry.h"
+#include "mlir/IR/MLIRContext.h"
+
+#include "mlir/Dialect/Arith/IR/Arith.h"
 #include "mlir/Dialect/Func/IR/FuncOps.h"
-#include "mlir/Dialect/Arith/IR/Arith.h" 
+
 #include "mlir/Parser/Parser.h"
 #include "mlir/Support/FileUtilities.h"
+
 #include "llvm/Support/SourceMgr.h"
 #include "llvm/Support/raw_ostream.h"
+
 #include <iostream>
 #include <string>
 
 int main() {
-    // 1. Core compiler setup
-    mlir::MLIRContext context;
-    
-    // Load the Dialects required to parse our test.mlir (func and arith)
-    context.loadDialect<mlir::func::FuncDialect>();
-    context.loadDialect<mlir::arith::ArithDialect>();
 
-    // 2. Set up the LLVM Source Manager to handle file loading
+    // -------------------------------------------------------------------------
+    // Register dialects
+    // -------------------------------------------------------------------------
+
+    mlir::DialectRegistry registry;
+
+    registry.insert<
+        mlir::func::FuncDialect,
+        mlir::arith::ArithDialect,
+        mlir::mydialect::MyDialectDialect
+    >();
+
+    // -------------------------------------------------------------------------
+    // Create MLIR context
+    // -------------------------------------------------------------------------
+
+    mlir::MLIRContext context(registry);
+
+    // -------------------------------------------------------------------------
+    // Explicitly load dialects
+    // -------------------------------------------------------------------------
+
+    context.loadDialect<
+        mlir::func::FuncDialect,
+        mlir::arith::ArithDialect,
+        mlir::mydialect::MyDialectDialect
+    >();
+
+    // -------------------------------------------------------------------------
+    // Source manager
+    // -------------------------------------------------------------------------
+
     llvm::SourceMgr sourceMgr;
+
     std::string errorMessage;
-    
-    // Path relative to where you execute the binary (or use an absolute path)
+
     std::string filename = "../src/test.mlir";
-    
+
     auto file = mlir::openInputFile(filename, &errorMessage);
+
     if (!file) {
-        llvm::errs() << "Error: Could not open source file: " << errorMessage << "\n";
+        llvm::errs()
+            << "Could not open file: "
+            << errorMessage
+            << "\n";
+
         return 1;
     }
-    
-    // Hand the file buffer over to the source manager
-    sourceMgr.AddNewSourceBuffer(std::move(file), llvm::SMLoc());
-    
-    // 3. Parse the MLIR file into an in-memory ModuleOperation
-    mlir::OwningOpRef<mlir::ModuleOp> module = mlir::parseSourceFile<mlir::ModuleOp>(sourceMgr, &context);
-    
+
+    sourceMgr.AddNewSourceBuffer(
+        std::move(file),
+        llvm::SMLoc()
+    );
+
+    // -------------------------------------------------------------------------
+    // Parse MLIR
+    // -------------------------------------------------------------------------
+
+    auto module =
+        mlir::parseSourceFile<mlir::ModuleOp>(
+            sourceMgr,
+            &context
+        );
+
     if (!module) {
-        llvm::errs() << "Error: Failed to parse MLIR syntax inside " << filename << "\n";
+        llvm::errs()
+            << "Failed to parse MLIR file\n";
+
         return 1;
     }
-    
-    // 4. Verify the structural integrity of the module
+
+    // -------------------------------------------------------------------------
+    // Verify module
+    // -------------------------------------------------------------------------
+
     if (mlir::failed(module->verify())) {
-        llvm::errs() << "Error: MLIR verification failed!\n";
+
+        llvm::errs()
+            << "Module verification failed\n";
+
         return 1;
     }
-    
-    std::cout << "Success: File parsed and verified! Printing module content:\n\n";
-    
-    // 5. Print the verified MLIR representation back out to the console
+
+    // -------------------------------------------------------------------------
+    // Print module
+    // -------------------------------------------------------------------------
+
+    llvm::outs()
+        << "\n=== Parsed MLIR Module ===\n\n";
+
     module->print(llvm::outs());
-    
+
+    llvm::outs() << "\n";
+
     return 0;
 }
-

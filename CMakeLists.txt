@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.20)
-project(project LANGUAGES CXX C)
+
+project(project LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(NOT TARGET zstd::libzstd_static)
-    add_library(zstd::libzstd_static INTERFACE IMPORTED)
-endif()
+# ------------------------------------------------------------------------------
+# LLVM / MLIR paths
+# ------------------------------------------------------------------------------
 
 set(LLVM_DIR "/home/shevo/LLVM-22.1.0-Linux-X64/lib/cmake/llvm")
 set(MLIR_DIR "/home/shevo/LLVM-22.1.0-Linux-X64/lib/cmake/mlir")
@@ -14,19 +15,46 @@ set(MLIR_DIR "/home/shevo/LLVM-22.1.0-Linux-X64/lib/cmake/mlir")
 find_package(LLVM REQUIRED CONFIG)
 find_package(MLIR REQUIRED CONFIG)
 
-include_directories(${LLVM_INCLUDE_DIRS} ${MLIR_INCLUDE_DIRS})
-link_directories(${LLVM_LIBRARY_DIRS})
-add_definitions(${LLVM_DEFINITIONS})
+message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+message(STATUS "Using MLIRConfig.cmake in: ${MLIR_DIR}")
 
-add_executable(mlir-driver src/main.cpp)
+# ------------------------------------------------------------------------------
+# IMPORTANT: MATCH LLVM RTTI SETTINGS
+# ------------------------------------------------------------------------------
 
-# ... (rest of CMake remains identical)
+add_compile_options(-fno-rtti)
 
-target_link_libraries(mlir-driver PRIVATE
-    MLIRIR
-    MLIRParser
-    MLIRSupport
-    MLIRFuncDialect
-    MLIRArithDialect # <-- Add this linker target
+# ------------------------------------------------------------------------------
+# Include directories
+# ------------------------------------------------------------------------------
+
+include_directories(
+  ${LLVM_INCLUDE_DIRS}
+  ${MLIR_INCLUDE_DIRS}
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
+link_directories(${LLVM_LIBRARY_DIRS})
+
+add_definitions(${LLVM_DEFINITIONS})
+
+# ------------------------------------------------------------------------------
+# Executable
+# ------------------------------------------------------------------------------
+
+add_executable(mlir-driver
+  src/main.cpp
+  src/MyDialect.cpp
+)
+
+# ------------------------------------------------------------------------------
+# MLIR libraries
+# ------------------------------------------------------------------------------
+
+target_link_libraries(mlir-driver PRIVATE
+  MLIRIR
+  MLIRParser
+  MLIRSupport
+  MLIRFuncDialect
+  MLIRArithDialect
+)

@@ -246,6 +246,30 @@ mlir-driver/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mlir-driver.dir/build.make CMakeFiles/mlir-driver.dir/build
 .PHONY : mlir-driver/fast
 
+src/MyDialect.o: src/MyDialect.cpp.o
+.PHONY : src/MyDialect.o
+
+# target to build an object file
+src/MyDialect.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mlir-driver.dir/build.make CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.o
+.PHONY : src/MyDialect.cpp.o
+
+src/MyDialect.i: src/MyDialect.cpp.i
+.PHONY : src/MyDialect.i
+
+# target to preprocess a source file
+src/MyDialect.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mlir-driver.dir/build.make CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.i
+.PHONY : src/MyDialect.cpp.i
+
+src/MyDialect.s: src/MyDialect.cpp.s
+.PHONY : src/MyDialect.s
+
+# target to generate assembly for a file
+src/MyDialect.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mlir-driver.dir/build.make CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.s
+.PHONY : src/MyDialect.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -288,6 +312,9 @@ help:
 	@echo "... target_parser_gen"
 	@echo "... vt_gen"
 	@echo "... mlir-driver"
+	@echo "... src/MyDialect.o"
+	@echo "... src/MyDialect.i"
+	@echo "... src/MyDialect.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

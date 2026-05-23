@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/shevo/project/src/MyDialect.cpp" "CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.o" "gcc" "CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.o.d"
   "/home/shevo/project/src/main.cpp" "CMakeFiles/mlir-driver.dir/src/main.cpp.o" "gcc" "CMakeFiles/mlir-driver.dir/src/main.cpp.o.d"
   )
 
