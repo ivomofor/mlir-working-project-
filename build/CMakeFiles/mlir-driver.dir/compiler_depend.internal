@@ -114,6 +114,8 @@ CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.o
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/StorageUniquer.h
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/TypeID.h
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/WalkResult.h
+ /home/shevo/project/src/MyAttrs.cpp.inc
+ /home/shevo/project/src/MyAttrs.h.inc
  /home/shevo/project/src/MyDialect.cpp.inc
  /home/shevo/project/src/MyDialect.h
  /home/shevo/project/src/MyDialect.h.inc
@@ -584,6 +586,7 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/StorageUniquer.h
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/TypeID.h
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/WalkResult.h
+ /home/shevo/project/src/MyAttrs.h.inc
  /home/shevo/project/src/MyDialect.h
  /home/shevo/project/src/MyDialect.h.inc
  /home/shevo/project/src/MyOps.h.inc

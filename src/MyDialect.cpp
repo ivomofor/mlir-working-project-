@@ -17,6 +17,13 @@
 #include "MyTypes.cpp.inc"
 
 // -----------------------------------------------------------------------------
+// Attribute Definitions
+// -----------------------------------------------------------------------------
+
+#define GET_ATTRDEF_CLASSES
+#include "MyAttrs.cpp.inc"
+
+// -----------------------------------------------------------------------------
 // Operation Definitions
 // -----------------------------------------------------------------------------
 
@@ -31,11 +38,19 @@ namespace mlir::mydialect {
 
 void MyDialectDialect::initialize() {
 
+  // Register types
   addTypes<
 #define GET_TYPEDEF_LIST
 #include "MyTypes.cpp.inc"
       >();
 
+  // Register attributes
+  addAttributes<
+#define GET_ATTRDEF_LIST
+#include "MyAttrs.cpp.inc"
+      >();
+
+  // Register operations
   addOperations<
 #define GET_OP_LIST
 #include "MyOps.cpp.inc"

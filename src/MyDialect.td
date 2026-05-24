@@ -15,12 +15,35 @@ def MyDialect_Dialect : Dialect {
   //   parseType()
   //   printType()
   let useDefaultTypePrinterParser = 1;
+
+  // Auto-generate:
+  //   parseAttribute()
+  //   printAttribute()
+  let useDefaultAttributePrinterParser = 1;
+}
+
+// ============================================================================
+// CUSTOM ATTRIBUTE
+// Example:
+//   #mydialect.layout<"NHWC">
+// ============================================================================
+
+def MyLayoutAttr : AttrDef<MyDialect_Dialect, "Layout"> {
+
+  let mnemonic = "layout";
+
+  let parameters = (ins
+    "std::string":$layout
+  );
+
+  let assemblyFormat =
+      "`<` $layout `>`";
 }
 
 // ============================================================================
 // CUSTOM TYPE
-// Syntax:
-//   !mydialect.tensor<2x3xf32>
+// Example:
+//   !mydialect.tensor<[2,3],f32>
 // ============================================================================
 
 def MyTensorType : TypeDef<MyDialect_Dialect, "Tensor"> {
@@ -40,11 +63,6 @@ def MyTensorType : TypeDef<MyDialect_Dialect, "Tensor"> {
 // OPERATIONS
 // ============================================================================
 
-// --------------------------------------------------------------------------
-// mydialect.myop
-// Adds two f32 values
-// --------------------------------------------------------------------------
-
 def MyOp : Op<MyDialect_Dialect, "myop"> {
 
   let arguments = (ins F32:$lhs, F32:$rhs);
@@ -54,11 +72,6 @@ def MyOp : Op<MyDialect_Dialect, "myop"> {
   let assemblyFormat =
       "$lhs `,` $rhs attr-dict `:` type($res)";
 }
-
-// --------------------------------------------------------------------------
-// mydialect.mysub
-// Subtracts two f32 values
-// --------------------------------------------------------------------------
 
 def MySubOp : Op<MyDialect_Dialect, "mysub"> {
 

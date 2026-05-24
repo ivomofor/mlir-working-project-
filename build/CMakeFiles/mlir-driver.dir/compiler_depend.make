@@ -113,6 +113,8 @@ CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.o: /home/shevo/project/src/MyDialec
   /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/StorageUniquer.h \
   /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/TypeID.h \
   /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/WalkResult.h \
+  /home/shevo/project/src/MyAttrs.cpp.inc \
+  /home/shevo/project/src/MyAttrs.h.inc \
   /home/shevo/project/src/MyDialect.cpp.inc \
   /home/shevo/project/src/MyDialect.h \
   /home/shevo/project/src/MyDialect.h.inc \
@@ -582,6 +584,7 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
   /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/StorageUniquer.h \
   /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/TypeID.h \
   /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/WalkResult.h \
+  /home/shevo/project/src/MyAttrs.h.inc \
   /home/shevo/project/src/MyDialect.h \
   /home/shevo/project/src/MyDialect.h.inc \
   /home/shevo/project/src/MyOps.h.inc \
@@ -913,10 +916,6 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/SymbolTable.h:
 
-/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Interfaces/DataLayoutAttrInterface.h.inc:
-
-/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/RegionKindInterface.h.inc:
-
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/RegionKindInterface.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Parser/Parser.h:
@@ -1155,9 +1154,17 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /usr/include/c++/13/pstl/glue_numeric_defs.h:
 
-/usr/include/c++/13/backward/auto_ptr.h:
+/usr/include/c++/13/pstl/glue_algorithm_defs.h:
+
+/usr/include/c++/13/pstl/execution_defs.h:
 
 /usr/include/assert.h:
+
+/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Interfaces/DataLayoutAttrInterface.h.inc:
+
+/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/RegionKindInterface.h.inc:
+
+/home/shevo/project/src/MyAttrs.h.inc:
 
 /usr/include/c++/13/array:
 
@@ -1283,6 +1290,8 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /home/shevo/project/src/main.cpp:
 
+/home/shevo/project/src/MyAttrs.cpp.inc:
+
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/Attributes.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/AttributeSupport.h:
@@ -1339,8 +1348,6 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/Support/PointerLikeTypeTraits.h:
 
-/usr/include/c++/13/backward/binders.h:
-
 /usr/include/x86_64-linux-gnu/sys/types.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/STLExtras.h:
@@ -1380,8 +1387,6 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/SmallVector.h:
 
 /usr/include/c++/13/ext/concurrence.h:
-
-/usr/include/c++/13/pstl/glue_algorithm_defs.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/PatternMatch.h:
 
@@ -1589,6 +1594,10 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/Support/TypeName.h:
 
+/usr/include/c++/13/backward/auto_ptr.h:
+
+/usr/include/c++/13/backward/binders.h:
+
 /usr/include/c++/13/bits/alloc_traits.h:
 
 /usr/include/c++/13/bits/concept_check.h:
@@ -1602,8 +1611,6 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 /usr/include/c++/13/bits/basic_ios.h:
 
 /usr/include/c++/13/bits/basic_ios.tcc:
-
-/usr/include/c++/13/pstl/execution_defs.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/BuiltinOps.h.inc:
 

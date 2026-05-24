@@ -21,6 +21,14 @@ public:
     return ::llvm::StringLiteral("mydialect");
   }
 
+  /// Parse an attribute registered to this dialect.
+  ::mlir::Attribute parseAttribute(::mlir::DialectAsmParser &parser,
+                                   ::mlir::Type type) const override;
+
+  /// Print an attribute registered to this dialect.
+  void printAttribute(::mlir::Attribute attr,
+                      ::mlir::DialectAsmPrinter &os) const override;
+
   /// Parse a type registered to this dialect.
   ::mlir::Type parseType(::mlir::DialectAsmParser &parser) const override;
 
