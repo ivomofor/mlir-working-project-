@@ -1,16 +1,20 @@
 #include "MyDialect.h"
 
-#include "mlir/IR/Builders.h"
 #include "mlir/IR/DialectImplementation.h"
-
-using namespace mlir;
-using namespace mlir::mydialect;
+#include "llvm/ADT/TypeSwitch.h"
 
 // -----------------------------------------------------------------------------
 // Dialect Definitions
 // -----------------------------------------------------------------------------
 
 #include "MyDialect.cpp.inc"
+
+// -----------------------------------------------------------------------------
+// Type Definitions
+// -----------------------------------------------------------------------------
+
+#define GET_TYPEDEF_CLASSES
+#include "MyTypes.cpp.inc"
 
 // -----------------------------------------------------------------------------
 // Operation Definitions
@@ -23,9 +27,19 @@ using namespace mlir::mydialect;
 // Dialect Initialization
 // -----------------------------------------------------------------------------
 
+namespace mlir::mydialect {
+
 void MyDialectDialect::initialize() {
+
+  addTypes<
+#define GET_TYPEDEF_LIST
+#include "MyTypes.cpp.inc"
+      >();
+
   addOperations<
 #define GET_OP_LIST
 #include "MyOps.cpp.inc"
       >();
 }
+
+} // namespace mlir::mydialect

@@ -9,13 +9,11 @@
 
 namespace mlir::mydialect {
 
-/// integer addition
 class MyOp;
 
 } // namespace mlir::mydialect
 namespace mlir::mydialect {
 
-/// integer subtraction
 class MySubOp;
 
 } // namespace mlir::mydialect
@@ -111,7 +109,7 @@ public:
 
   ::llvm::LogicalResult verify(::mlir::Location loc);
 };
-class MyOp : public ::mlir::Op<MyOp, ::mlir::OpTrait::ZeroRegions, ::mlir::OpTrait::OneResult, ::mlir::OpTrait::OneTypedResult<::mlir::IntegerType>::Impl, ::mlir::OpTrait::ZeroSuccessors, ::mlir::OpTrait::NOperands<2>::Impl, ::mlir::OpTrait::OpInvariants> {
+class MyOp : public ::mlir::Op<MyOp, ::mlir::OpTrait::ZeroRegions, ::mlir::OpTrait::OneResult, ::mlir::OpTrait::OneTypedResult<::mlir::FloatType>::Impl, ::mlir::OpTrait::ZeroSuccessors, ::mlir::OpTrait::NOperands<2>::Impl, ::mlir::OpTrait::OpInvariants> {
 public:
   using Op::Op;
   using Op::print;
@@ -140,12 +138,12 @@ public:
              std::next(getOperation()->operand_begin(), valueRange.first + valueRange.second)};
   }
 
-  ::mlir::TypedValue<::mlir::IntegerType> getLhs() {
-    return ::llvm::cast<::mlir::TypedValue<::mlir::IntegerType>>(*getODSOperands(0).begin());
+  ::mlir::TypedValue<::mlir::FloatType> getLhs() {
+    return ::llvm::cast<::mlir::TypedValue<::mlir::FloatType>>(*getODSOperands(0).begin());
   }
 
-  ::mlir::TypedValue<::mlir::IntegerType> getRhs() {
-    return ::llvm::cast<::mlir::TypedValue<::mlir::IntegerType>>(*getODSOperands(1).begin());
+  ::mlir::TypedValue<::mlir::FloatType> getRhs() {
+    return ::llvm::cast<::mlir::TypedValue<::mlir::FloatType>>(*getODSOperands(1).begin());
   }
 
   ::mlir::OpOperand &getLhsMutable() {
@@ -168,8 +166,8 @@ public:
              std::next(getOperation()->result_begin(), valueRange.first + valueRange.second)};
   }
 
-  ::mlir::TypedValue<::mlir::IntegerType> getRes() {
-    return ::llvm::cast<::mlir::TypedValue<::mlir::IntegerType>>(*getODSResults(0).begin());
+  ::mlir::TypedValue<::mlir::FloatType> getRes() {
+    return ::llvm::cast<::mlir::TypedValue<::mlir::FloatType>>(*getODSResults(0).begin());
   }
 
   static ::llvm::LogicalResult setPropertiesFromAttr(Properties &prop, ::mlir::Attribute attr, ::llvm::function_ref<::mlir::InFlightDiagnostic()> emitError);
@@ -290,7 +288,7 @@ public:
 
   ::llvm::LogicalResult verify(::mlir::Location loc);
 };
-class MySubOp : public ::mlir::Op<MySubOp, ::mlir::OpTrait::ZeroRegions, ::mlir::OpTrait::OneResult, ::mlir::OpTrait::OneTypedResult<::mlir::IntegerType>::Impl, ::mlir::OpTrait::ZeroSuccessors, ::mlir::OpTrait::NOperands<2>::Impl, ::mlir::OpTrait::OpInvariants> {
+class MySubOp : public ::mlir::Op<MySubOp, ::mlir::OpTrait::ZeroRegions, ::mlir::OpTrait::OneResult, ::mlir::OpTrait::OneTypedResult<::mlir::FloatType>::Impl, ::mlir::OpTrait::ZeroSuccessors, ::mlir::OpTrait::NOperands<2>::Impl, ::mlir::OpTrait::OpInvariants> {
 public:
   using Op::Op;
   using Op::print;
@@ -319,12 +317,12 @@ public:
              std::next(getOperation()->operand_begin(), valueRange.first + valueRange.second)};
   }
 
-  ::mlir::TypedValue<::mlir::IntegerType> getLhs() {
-    return ::llvm::cast<::mlir::TypedValue<::mlir::IntegerType>>(*getODSOperands(0).begin());
+  ::mlir::TypedValue<::mlir::FloatType> getLhs() {
+    return ::llvm::cast<::mlir::TypedValue<::mlir::FloatType>>(*getODSOperands(0).begin());
   }
 
-  ::mlir::TypedValue<::mlir::IntegerType> getRhs() {
-    return ::llvm::cast<::mlir::TypedValue<::mlir::IntegerType>>(*getODSOperands(1).begin());
+  ::mlir::TypedValue<::mlir::FloatType> getRhs() {
+    return ::llvm::cast<::mlir::TypedValue<::mlir::FloatType>>(*getODSOperands(1).begin());
   }
 
   ::mlir::OpOperand &getLhsMutable() {
@@ -347,8 +345,8 @@ public:
              std::next(getOperation()->result_begin(), valueRange.first + valueRange.second)};
   }
 
-  ::mlir::TypedValue<::mlir::IntegerType> getRes() {
-    return ::llvm::cast<::mlir::TypedValue<::mlir::IntegerType>>(*getODSResults(0).begin());
+  ::mlir::TypedValue<::mlir::FloatType> getRes() {
+    return ::llvm::cast<::mlir::TypedValue<::mlir::FloatType>>(*getODSResults(0).begin());
   }
 
   static ::llvm::LogicalResult setPropertiesFromAttr(Properties &prop, ::mlir::Attribute attr, ::llvm::function_ref<::mlir::InFlightDiagnostic()> emitError);

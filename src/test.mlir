@@ -1,12 +1,12 @@
 module {
 
-  func.func @math(%a : i32, %b : i32) -> i32 {
+  func.func @tensor_test(
+    %arg0 : !mydialect.tensor<[2,3],f32>
+  ) -> f32 {
 
-    %0 = mydialect.myop %a, %b : i32
+    %0 = arith.constant 1.0 : f32
 
-    %1 = mydialect.mysub %0, %a : i32
-
-    return %1 : i32
+    return %0 : f32
   }
 
 }

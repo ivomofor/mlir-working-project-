@@ -31,6 +31,7 @@ CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.o
  /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/StringRef.h
  /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/StringSwitch.h
  /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/Twine.h
+ /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/TypeSwitch.h
  /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/bit.h
  /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/ilist.h
  /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/ilist_base.h
@@ -118,6 +119,8 @@ CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.o
  /home/shevo/project/src/MyDialect.h.inc
  /home/shevo/project/src/MyOps.cpp.inc
  /home/shevo/project/src/MyOps.h.inc
+ /home/shevo/project/src/MyTypes.cpp.inc
+ /home/shevo/project/src/MyTypes.h.inc
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
  /usr/include/asm-generic/errno.h
@@ -584,6 +587,7 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o
  /home/shevo/project/src/MyDialect.h
  /home/shevo/project/src/MyDialect.h.inc
  /home/shevo/project/src/MyOps.h.inc
+ /home/shevo/project/src/MyTypes.h.inc
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
  /usr/include/asm-generic/errno.h

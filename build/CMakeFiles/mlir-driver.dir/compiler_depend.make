@@ -30,6 +30,7 @@ CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.o: /home/shevo/project/src/MyDialec
   /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/StringRef.h \
   /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/StringSwitch.h \
   /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/Twine.h \
+  /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/TypeSwitch.h \
   /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/bit.h \
   /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/ilist.h \
   /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/ilist_base.h \
@@ -117,6 +118,8 @@ CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.o: /home/shevo/project/src/MyDialec
   /home/shevo/project/src/MyDialect.h.inc \
   /home/shevo/project/src/MyOps.cpp.inc \
   /home/shevo/project/src/MyOps.h.inc \
+  /home/shevo/project/src/MyTypes.cpp.inc \
+  /home/shevo/project/src/MyTypes.h.inc \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -582,6 +585,7 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
   /home/shevo/project/src/MyDialect.h \
   /home/shevo/project/src/MyDialect.h.inc \
   /home/shevo/project/src/MyOps.h.inc \
+  /home/shevo/project/src/MyTypes.h.inc \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -1147,11 +1151,9 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /usr/include/c++/13/stdexcept:
 
-/usr/include/x86_64-linux-gnu/bits/time64.h:
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
 
-/home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/iterator.h:
-
-/usr/include/c++/13/bits/basic_string.tcc:
+/usr/include/c++/13/pstl/glue_numeric_defs.h:
 
 /usr/include/c++/13/backward/auto_ptr.h:
 
@@ -1186,6 +1188,10 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 /usr/include/c++/13/set:
 
 /usr/include/c++/13/bits/shared_ptr_atomic.h:
+
+/usr/include/c++/13/pstl/pstl_config.h:
+
+/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/CyclicReplacerCache.h:
 
 /usr/include/c++/13/bits/postypes.h:
 
@@ -1225,13 +1231,13 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/Support/MemAlloc.h:
 
+/usr/include/c++/13/pstl/glue_memory_defs.h:
+
+/usr/include/c++/13/exception:
+
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/Diagnostics.h:
-
-/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/CyclicReplacerCache.h:
-
-/usr/include/c++/13/pstl/pstl_config.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/BuiltinTypes.h.inc:
 
@@ -1291,13 +1297,27 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /usr/include/c++/13/algorithm:
 
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
-/home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/SmallPtrSet.h:
+/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/OpAsmSupport.h:
+
+/usr/include/c++/13/bits/stl_function.h:
+
+/home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/ArrayRef.h:
+
+/home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/ilist_node_base.h:
+
+/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/AttrTypeSubElements.h:
+
+/usr/include/c++/13/bits/ostream.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
 /usr/include/asm-generic/errno.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/SmallPtrSet.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/PointerUnion.h:
 
@@ -1308,10 +1328,6 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/ilist_node_options.h:
-
-/usr/include/c++/13/exception:
-
-/usr/include/c++/13/pstl/glue_memory_defs.h:
 
 /usr/include/c++/13/ext/alloc_traits.h:
 
@@ -1367,6 +1383,10 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /usr/include/c++/13/pstl/glue_algorithm_defs.h:
 
+/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/PatternMatch.h:
+
+/usr/include/c++/13/bits/atomic_lockfree_defines.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h:
 
 /usr/include/c++/13/numeric:
@@ -1380,6 +1400,8 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/DialectInterface.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/WalkResult.h:
+
+/home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/TypeSwitch.h:
 
 /usr/include/c++/13/bits/unordered_map.h:
 
@@ -1420,16 +1442,6 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 /home/shevo/project/src/MyDialect.h.inc:
 
 /usr/include/c++/13/bits/stl_bvector.h:
-
-/usr/include/c++/13/bits/stl_function.h:
-
-/home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/ArrayRef.h:
-
-/home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/ilist_node_base.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/OpAsmSupport.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
@@ -1475,6 +1487,12 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /usr/include/c++/13/bits/streambuf.tcc:
 
+/usr/include/x86_64-linux-gnu/bits/time64.h:
+
+/home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/iterator.h:
+
+/usr/include/c++/13/bits/basic_string.tcc:
+
 /usr/include/c++/13/bits/stl_multiset.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/StorageUniquerSupport.h:
@@ -1493,10 +1511,6 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/Support/Alignment.h:
 
-/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/AttrTypeSubElements.h:
-
-/usr/include/c++/13/bits/ostream.tcc:
-
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/Hashing.h:
 
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/SmallVectorExtras.h:
@@ -1508,6 +1522,8 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/Support/Casting.h:
 
 /usr/include/c++/13/bits/basic_string.h:
+
+/home/shevo/project/src/MyTypes.cpp.inc:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
@@ -1561,6 +1577,8 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
+/home/shevo/project/src/MyTypes.h.inc:
+
 /usr/include/c++/13/bits/node_handle.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h:
@@ -1580,10 +1598,6 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 /usr/include/c++/13/bits/allocated_ptr.h:
 
 /usr/include/c++/13/clocale:
-
-/home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/PatternMatch.h:
-
-/usr/include/c++/13/bits/atomic_lockfree_defines.h:
 
 /usr/include/c++/13/bits/basic_ios.h:
 
@@ -1834,7 +1848,3 @@ CMakeFiles/mlir-driver.dir/src/main.cpp.o: /home/shevo/project/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
 /usr/include/c++/13/limits:
-
-/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
-
-/usr/include/c++/13/pstl/glue_numeric_defs.h:

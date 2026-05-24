@@ -327,21 +327,24 @@ CMakeFiles/mlir-driver.dir/src/MyDialect.cpp.o: \
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/TypeRange.h \
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/ValueRange.h \
  /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/Support/TrailingObjects.h \
- /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/OpImplementation.h \
- /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/BuiltinTypes.h \
- /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/ADTExtras.h \
- /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/BuiltinTypes.h.inc \
- /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/BuiltinTypeConstraints.h.inc \
- /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/DialectInterface.h \
+ /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/Builders.h \
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/OpDefinition.h \
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/ODSSupport.h \
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/Operation.h \
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/Region.h \
+ /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/BuiltinTypes.h \
+ /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/Support/ADTExtras.h \
+ /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/BuiltinTypes.h.inc \
+ /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/BuiltinTypeConstraints.h.inc \
+ /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/OpImplementation.h \
+ /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/DialectInterface.h \
  /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/Support/SMLoc.h \
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/OpAsmOpInterface.h.inc \
  /home/shevo/project/src/MyDialect.h.inc \
+ /home/shevo/project/src/MyTypes.h.inc \
  /home/shevo/project/src/MyOps.h.inc \
- /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/Builders.h \
  /home/shevo/LLVM-22.1.0-Linux-X64/include/mlir/IR/DialectImplementation.h \
+ /home/shevo/LLVM-22.1.0-Linux-X64/include/llvm/ADT/TypeSwitch.h \
  /home/shevo/project/src/MyDialect.cpp.inc \
+ /home/shevo/project/src/MyTypes.cpp.inc \
  /home/shevo/project/src/MyOps.cpp.inc

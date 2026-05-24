@@ -26,9 +26,9 @@
 static ::llvm::LogicalResult __mlir_ods_local_type_constraint_MyDialect1(
     ::mlir::Operation *op, ::mlir::Type type, ::llvm::StringRef valueKind,
     unsigned valueIndex) {
-  if (!((type.isSignlessInteger(32)))) {
+  if (!((type.isF32()))) {
     return op->emitOpError(valueKind) << " #" << valueIndex
-        << " must be 32-bit signless integer, but got " << type;
+        << " must be 32-bit float, but got " << type;
   }
   return ::mlir::success();
 }
@@ -230,12 +230,12 @@ MyOp MyOp::create(::mlir::ImplicitLocOpBuilder &builder, ::mlir::TypeRange resul
     return ::mlir::failure();
 
   {
-    ::mlir::IntegerType type;
+    ::mlir::FloatType type;
     if (parser.parseCustomTypeWithFallback(type))
       return ::mlir::failure();
     resRawType = type;
   }
-  ::mlir::Type odsBuildableType0 = parser.getBuilder().getIntegerType(32);
+  ::mlir::Type odsBuildableType0 = parser.getBuilder().getF32Type();
   result.addTypes(resTypes);
   if (parser.resolveOperands(lhsOperands, odsBuildableType0, lhsOperandsLoc, result.operands))
     return ::mlir::failure();
@@ -256,7 +256,7 @@ void MyOp::print(::mlir::OpAsmPrinter &_odsPrinter) {
   _odsPrinter << ' ';
   {
     auto type = getRes().getType();
-    if (auto validType = ::llvm::dyn_cast<::mlir::IntegerType>(type))
+    if (auto validType = ::llvm::dyn_cast<::mlir::FloatType>(type))
       _odsPrinter.printStrippedAttrOrType(validType);
    else
      _odsPrinter << type;
@@ -465,12 +465,12 @@ MySubOp MySubOp::create(::mlir::ImplicitLocOpBuilder &builder, ::mlir::TypeRange
     return ::mlir::failure();
 
   {
-    ::mlir::IntegerType type;
+    ::mlir::FloatType type;
     if (parser.parseCustomTypeWithFallback(type))
       return ::mlir::failure();
     resRawType = type;
   }
-  ::mlir::Type odsBuildableType0 = parser.getBuilder().getIntegerType(32);
+  ::mlir::Type odsBuildableType0 = parser.getBuilder().getF32Type();
   result.addTypes(resTypes);
   if (parser.resolveOperands(lhsOperands, odsBuildableType0, lhsOperandsLoc, result.operands))
     return ::mlir::failure();
@@ -491,7 +491,7 @@ void MySubOp::print(::mlir::OpAsmPrinter &_odsPrinter) {
   _odsPrinter << ' ';
   {
     auto type = getRes().getType();
-    if (auto validType = ::llvm::dyn_cast<::mlir::IntegerType>(type))
+    if (auto validType = ::llvm::dyn_cast<::mlir::FloatType>(type))
       _odsPrinter.printStrippedAttrOrType(validType);
    else
      _odsPrinter << type;
