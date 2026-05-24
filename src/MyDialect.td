@@ -5,9 +5,13 @@ def MyDialect_Dialect : Dialect {
   let cppNamespace = "::mlir::mydialect";
 }
 
+// ============================================================================
+// myop
+// ============================================================================
+
 def MyOp : Op<MyDialect_Dialect, "myop"> {
 
-  let summary = "simple op";
+  let summary = "integer addition";
 
   let arguments = (ins
     I32:$lhs,
@@ -18,5 +22,27 @@ def MyOp : Op<MyDialect_Dialect, "myop"> {
     I32:$res
   );
 
-  let assemblyFormat = "$lhs `,` $rhs attr-dict `:` type($res)";
+  let assemblyFormat =
+    "$lhs `,` $rhs attr-dict `:` type($res)";
+}
+
+// ============================================================================
+// mysub
+// ============================================================================
+
+def MySubOp : Op<MyDialect_Dialect, "mysub"> {
+
+  let summary = "integer subtraction";
+
+  let arguments = (ins
+    I32:$lhs,
+    I32:$rhs
+  );
+
+  let results = (outs
+    I32:$res
+  );
+
+  let assemblyFormat =
+    "$lhs `,` $rhs attr-dict `:` type($res)";
 }
