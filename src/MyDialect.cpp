@@ -58,3 +58,20 @@ void MyDialectDialect::initialize() {
 }
 
 } // namespace mlir::mydialect
+
+// -----------------------------------------------------------------------------
+// MyOp Verifier
+// -----------------------------------------------------------------------------
+
+mlir::LogicalResult mlir::mydialect::MyOp::verify() {
+
+  Type lhsType = getLhs().getType();
+  Type rhsType = getRhs().getType();
+
+  if (lhsType != rhsType) {
+    return emitOpError(
+        "lhs and rhs must have same type");
+  }
+
+  return mlir::success();
+}

@@ -48,14 +48,14 @@ def MyLayoutAttr : AttrDef<MyDialect_Dialect, "Layout"> {
 
 def MyTensorType : TypeDef<MyDialect_Dialect, "Tensor"> {
 
-  let mnemonic = "tensor";
+    let mnemonic = "tensor";
 
-  let parameters = (ins
+    let parameters = (ins
     ArrayRefParameter<"int64_t">:$shape,
     "Type":$elementType
   );
 
-  let assemblyFormat =
+    let assemblyFormat =
       "`<` `[` $shape `]` `,` $elementType `>`";
 }
 
@@ -65,12 +65,14 @@ def MyTensorType : TypeDef<MyDialect_Dialect, "Tensor"> {
 
 def MyOp : Op<MyDialect_Dialect, "myop"> {
 
-  let arguments = (ins F32:$lhs, F32:$rhs);
+  let arguments = (ins AnyType:$lhs, AnyType:$rhs);
 
-  let results = (outs F32:$res);
+  let results = (outs AnyType:$res);
 
-  let assemblyFormat =
-      "$lhs `,` $rhs attr-dict `:` type($res)";
+let assemblyFormat =
+    "$lhs `,` $rhs attr-dict `:` type($lhs) `,` type($rhs) `->` type($res)";
+
+  let hasVerifier = 1;
 }
 
 def MySubOp : Op<MyDialect_Dialect, "mysub"> {
@@ -82,3 +84,4 @@ def MySubOp : Op<MyDialect_Dialect, "mysub"> {
   let assemblyFormat =
       "$lhs `,` $rhs attr-dict `:` type($res)";
 }
+

@@ -26,6 +26,16 @@
 static ::llvm::LogicalResult __mlir_ods_local_type_constraint_MyDialect1(
     ::mlir::Operation *op, ::mlir::Type type, ::llvm::StringRef valueKind,
     unsigned valueIndex) {
+  if (!((true))) {
+    return op->emitOpError(valueKind) << " #" << valueIndex
+        << " must be any type, but got " << type;
+  }
+  return ::mlir::success();
+}
+
+static ::llvm::LogicalResult __mlir_ods_local_type_constraint_MyDialect2(
+    ::mlir::Operation *op, ::mlir::Type type, ::llvm::StringRef valueKind,
+    unsigned valueIndex) {
   if (!((type.isF32()))) {
     return op->emitOpError(valueKind) << " #" << valueIndex
         << " must be 32-bit float, but got " << type;
@@ -195,7 +205,9 @@ MyOp MyOp::create(::mlir::ImplicitLocOpBuilder &builder, ::mlir::TypeRange resul
 }
 
 ::llvm::LogicalResult MyOp::verifyInvariants() {
-  return verifyInvariantsImpl();
+  if(::mlir::succeeded(verifyInvariantsImpl()) && ::mlir::succeeded(verify()))
+    return ::mlir::success();
+  return ::mlir::failure();
 }
 
 ::mlir::ParseResult MyOp::parse(::mlir::OpAsmParser &parser, ::mlir::OperationState &result) {
@@ -205,6 +217,10 @@ MyOp MyOp::create(::mlir::ImplicitLocOpBuilder &builder, ::mlir::TypeRange resul
   ::mlir::OpAsmParser::UnresolvedOperand rhsRawOperand{};
   ::llvm::ArrayRef<::mlir::OpAsmParser::UnresolvedOperand> rhsOperands(&rhsRawOperand, 1);  ::llvm::SMLoc rhsOperandsLoc;
   (void)rhsOperandsLoc;
+  ::mlir::Type lhsRawType{};
+  ::llvm::ArrayRef<::mlir::Type> lhsTypes(&lhsRawType, 1);
+  ::mlir::Type rhsRawType{};
+  ::llvm::ArrayRef<::mlir::Type> rhsTypes(&rhsRawType, 1);
   ::mlir::Type resRawType{};
   ::llvm::ArrayRef<::mlir::Type> resTypes(&resRawType, 1);
 
@@ -230,16 +246,33 @@ MyOp MyOp::create(::mlir::ImplicitLocOpBuilder &builder, ::mlir::TypeRange resul
     return ::mlir::failure();
 
   {
-    ::mlir::FloatType type;
+    ::mlir::Type type;
+    if (parser.parseCustomTypeWithFallback(type))
+      return ::mlir::failure();
+    lhsRawType = type;
+  }
+  if (parser.parseComma())
+    return ::mlir::failure();
+
+  {
+    ::mlir::Type type;
+    if (parser.parseCustomTypeWithFallback(type))
+      return ::mlir::failure();
+    rhsRawType = type;
+  }
+  if (parser.parseArrow())
+    return ::mlir::failure();
+
+  {
+    ::mlir::Type type;
     if (parser.parseCustomTypeWithFallback(type))
       return ::mlir::failure();
     resRawType = type;
   }
-  ::mlir::Type odsBuildableType0 = parser.getBuilder().getF32Type();
   result.addTypes(resTypes);
-  if (parser.resolveOperands(lhsOperands, odsBuildableType0, lhsOperandsLoc, result.operands))
+  if (parser.resolveOperands(lhsOperands, lhsTypes, lhsOperandsLoc, result.operands))
     return ::mlir::failure();
-  if (parser.resolveOperands(rhsOperands, odsBuildableType0, rhsOperandsLoc, result.operands))
+  if (parser.resolveOperands(rhsOperands, rhsTypes, rhsOperandsLoc, result.operands))
     return ::mlir::failure();
   return ::mlir::success();
 }
@@ -255,8 +288,26 @@ void MyOp::print(::mlir::OpAsmPrinter &_odsPrinter) {
   _odsPrinter << ' ' << ":";
   _odsPrinter << ' ';
   {
+    auto type = getLhs().getType();
+    if (auto validType = ::llvm::dyn_cast<::mlir::Type>(type))
+      _odsPrinter.printStrippedAttrOrType(validType);
+   else
+     _odsPrinter << type;
+  }
+  _odsPrinter << ",";
+  _odsPrinter << ' ';
+  {
+    auto type = getRhs().getType();
+    if (auto validType = ::llvm::dyn_cast<::mlir::Type>(type))
+      _odsPrinter.printStrippedAttrOrType(validType);
+   else
+     _odsPrinter << type;
+  }
+  _odsPrinter << ' ' << "->";
+  _odsPrinter << ' ';
+  {
     auto type = getRes().getType();
-    if (auto validType = ::llvm::dyn_cast<::mlir::FloatType>(type))
+    if (auto validType = ::llvm::dyn_cast<::mlir::Type>(type))
       _odsPrinter.printStrippedAttrOrType(validType);
    else
      _odsPrinter << type;
@@ -407,13 +458,13 @@ MySubOp MySubOp::create(::mlir::ImplicitLocOpBuilder &builder, ::mlir::TypeRange
     auto valueGroup0 = getODSOperands(0);
 
     for (auto v : valueGroup0) {
-      if (::mlir::failed(__mlir_ods_local_type_constraint_MyDialect1(*this, v.getType(), "operand", index++)))
+      if (::mlir::failed(__mlir_ods_local_type_constraint_MyDialect2(*this, v.getType(), "operand", index++)))
         return ::mlir::failure();
     }
     auto valueGroup1 = getODSOperands(1);
 
     for (auto v : valueGroup1) {
-      if (::mlir::failed(__mlir_ods_local_type_constraint_MyDialect1(*this, v.getType(), "operand", index++)))
+      if (::mlir::failed(__mlir_ods_local_type_constraint_MyDialect2(*this, v.getType(), "operand", index++)))
         return ::mlir::failure();
     }
   }
@@ -422,7 +473,7 @@ MySubOp MySubOp::create(::mlir::ImplicitLocOpBuilder &builder, ::mlir::TypeRange
     auto valueGroup0 = getODSResults(0);
 
     for (auto v : valueGroup0) {
-      if (::mlir::failed(__mlir_ods_local_type_constraint_MyDialect1(*this, v.getType(), "result", index++)))
+      if (::mlir::failed(__mlir_ods_local_type_constraint_MyDialect2(*this, v.getType(), "result", index++)))
         return ::mlir::failure();
     }
   }
